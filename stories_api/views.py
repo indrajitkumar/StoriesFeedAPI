@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-
 # Create your views here.
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
+
+from stories_api import serializers, models
+from stories_api import permissions
 
 
 class HelloViewSet(viewsets.ViewSet):
@@ -19,3 +22,11 @@ class HelloViewSet(viewsets.ViewSet):
         ]
 
         return Response({'message': 'Hello!', 'a_viewset': a_viewset})
+
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handle creating, creating and updating profiles"""
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.UpdateOwnProfile,)
