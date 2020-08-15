@@ -33,3 +33,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
             instance.set_password(password)
 
         return super().update(instance, validated_data)
+
+
+class StoriesFeedItemSerializer(serializers.ModelSerializer):
+    """Serializes profile feed items"""
+
+    class Meta:
+        model = models.StoriesFeedItem
+        fields = ('id', 'user_profile', 'story_text', 'created_on')
+        extra_kwargs = {'user_profile': {'read_only': True}}
