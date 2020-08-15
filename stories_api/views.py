@@ -1,12 +1,11 @@
-from django.shortcuts import render
+from rest_framework import filters
 from rest_framework import viewsets
-
 # Create your views here.
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 
-from stories_api import serializers, models
 from stories_api import permissions
+from stories_api import serializers, models
 
 
 class HelloViewSet(viewsets.ViewSet):
@@ -30,3 +29,5 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = models.UserProfile.objects.all()
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateOwnProfile,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name', 'email',)
