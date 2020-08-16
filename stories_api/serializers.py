@@ -40,5 +40,5 @@ class StoriesFeedItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.StoriesFeedItem
-        fields = ('id', 'user_profile', 'story_text', 'created_on')
+        fields = ('id', 'user_profile', 'picture', 'story_text', 'created_on')
         extra_kwargs = {'user_profile': {'read_only': True}}

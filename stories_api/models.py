@@ -63,6 +63,7 @@ class StoriesFeedItem(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
+    picture = models.ImageField(upload_to='pictures/%Y/%m/%d/', max_length=255, null=True, blank=True)
     story_text = models.CharField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
 
