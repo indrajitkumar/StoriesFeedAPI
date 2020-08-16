@@ -25,7 +25,7 @@ SECRET_KEY = 'x=4rp!36dm^(_+fubx7n2tc^y@af(pzy43)c26-$ma!*4ykr)h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://short-stories-api.herokuapp.com/']
 
 
 # Application definition
@@ -121,18 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 
 MEDIA_URL = '/site_media/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
-
-
-
-# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_media', 'media')
-# MEDIA_URL = '/site_media/media/'
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'site_media', 'static')
-# SITE_MEDIA_URL = '/site_media/'
-# STATIC_URL = '/site_media/'
-
 
 AUTH_USER_MODEL = 'stories_api.UserProfile'
