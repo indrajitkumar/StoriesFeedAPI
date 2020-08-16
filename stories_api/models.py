@@ -64,7 +64,7 @@ class StoriesFeedItem(models.Model):
         on_delete=models.CASCADE
     )
     picture = models.ImageField(upload_to='pictures/%Y/%m/%d/', max_length=255, null=True, blank=True)
-    story_text = models.CharField(max_length=255)
+    story_text = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
