@@ -14,6 +14,7 @@ virtualenv venv -p python3
 pip install -r requirements.txt
 
 ## Migrate database<br>
+``python manage.py makemigrations stories_api `` <br>
 ``python manage.py migrate``<br>
 If Sync reuired,then use 
 `` python manage.py migrate --run-syncdb
