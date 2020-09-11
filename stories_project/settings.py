@@ -128,4 +128,4 @@ MEDIA_URL = '/site_media/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
 
 AUTH_USER_MODEL = 'stories_api.UserProfile'
-django_heroku.settings(locals(), databases=False)
+django_heroku.settings(locals())
