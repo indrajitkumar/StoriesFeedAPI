@@ -21,7 +21,7 @@ python3 -m venv $PROJECT_BASE_PATH/env
 
 # Install python packages
 $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
-$PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.18
+$PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.19
 
 # Run migrations and collectstatic
 cd $PROJECT_BASE_PATH
@@ -30,9 +30,9 @@ $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
 cp $PROJECT_BASE_PATH/deploy/supervisor_stories_api.conf /etc/supervisor/conf.d/stories_api.conf
-supervisorctl reread
-supervisorctl update
-supervisorctl restart stories_api
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl restart stories_api
 
 # Configure nginx
 cp $PROJECT_BASE_PATH/deploy/nginx_stories_api.conf /etc/nginx/sites-available/stories_api.conf
