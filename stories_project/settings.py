@@ -10,12 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-from pathlib import Path
-
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -24,7 +21,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'x=4rp!36dm^(_+fubx7n2tc^y@af(pzy43)c26-$ma!*4ykr)h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
 ALLOWED_HOSTS = []
 
@@ -78,13 +75,14 @@ WSGI_APPLICATION = 'stories_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'NAME': os.path.join('BASE_DIR', 'db.sqlite3'),
     }
 }
 
 # ie if Heroku server
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
+
     DATABASES = {'default': dj_database_url.config()}
 
 # Password validation
@@ -128,4 +126,3 @@ MEDIA_URL = '/site_media/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
 
 AUTH_USER_MODEL = 'stories_api.UserProfile'
-django_heroku.settings(locals())
