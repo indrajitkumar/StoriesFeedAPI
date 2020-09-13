@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from stories_api import views
 
 router = DefaultRouter()
-router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
+# router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
 router.register('profile', views.UserProfileViewSet)
 router.register('feed', views.UserStoriesFeedViewSet)
 

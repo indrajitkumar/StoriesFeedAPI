@@ -26,3 +26,15 @@ python manage.py runserver 0.0.0.0:5000
 
 ## Test on browser<br>
 http://localhost:5000
+
+##To run on EC2 instance
+ssh ubuntu@ec2-3-6-41-100.ap-south-1.compute.amazonaws.com
+
+#### Install all required dependencies in EC2 instance by 
+curl -sL https://raw.githubusercontent.com/indrajitkumar/StoriesFeedAPI/master/deploy/setup.sh | sudo bash -
+ 
+ You can see project in EC2 instance:<br>
+ `cd /usr/local/apps`
+ then 
+ `sudo sh ./deploy/update.sh` for updating the changes from git and restart the server after migration of database.
+
